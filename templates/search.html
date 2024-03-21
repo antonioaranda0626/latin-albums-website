@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename = 'search_results.js') }}"></script>
+    
+    <script>
+        let results = {{results|tojson}} 
+        let search_string = {{search_string|tojson}} 
+    </script>
+    
+    <div class="container-fluid white-bg">
+        <div class="container results-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="albums-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

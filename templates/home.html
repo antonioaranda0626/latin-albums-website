@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
+<script>
+    let data = {{data|tojson}}
+</script>
+
+<div class="container-fluid base-red">
+    <div class="container">
+        <div class="row site-header white-text" id="search-header">Discover New Latin Music!</div>
+        <div class="row">
+            <div class="col-md-8 home-img">
+                <img src="https://variety.com/wp-content/uploads/2023/02/Bad-Bunny-Grammys-1.jpg?w=1000" class="img-fluid" alt="Bad Bunny performing at the Grammys.">
+            </div>
+            <div class="col-md-4 description-col">
+                <div class="description">
+                    <span class="white-text">
+                        Love latin music? <br>
+                        Want to find new artists? <br>
+                    </span>
+                    <div class="small-divider"></div>
+                    <span class="white-text">
+                        <span class="red-text">Explore</span> and <span class="red-text">discover</span> new Latin artists and albums here!</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid white-bg">
+    <div class="container">
+        <div class="row week-header grey-text">
+            Top Albums of the Week
+        </div>
+        <div class="row sub-week-header light-grey-text">
+            Check out this week's most popular albums!
+        </div>
+        <div class="row results-container">
+            <div class="col-md-12">
+                <div id="albums-list"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

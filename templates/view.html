@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename = 'view.js') }}"></script>
+    
+    <script>
+        let result = {{result|tojson}}
+    </script>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5 info-col-1">
+                <div class="album-info-header red-text">
+                    <span class="first">{{result.title}}</span>
+                </div>
+                <img src={{result.cover_art}} class="img-fluid album-img" alt="Album cover art for {{result.title}}.">
+                <div class="row">
+                    <div class="col-md-12 name-time-row ">
+                        <span class="name first red-text">
+                            {{result.artist}}
+                        </span>
+                        <span class="time grey-text first">
+                            {{result.release_year}}
+                        </span>
+                        <span class="time light-grey-text">
+                            {{result.length}} min
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 info-col-2">
+                <div class="row info-entry-spacing">
+                    <div class="col-md-7">
+                        <div class="row list-header info-entry-spacing grey-text">Features</div>
+                        <div class="row list-details">
+                            <ul>
+                                {% for feature in result.featured_artists %}
+                                    <button class="redirect-btn">{{feature}}</button> 
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row list-header info-entry-spacing grey-text">Genres</div>
+                        <div class="row list-details">
+                            <ul>
+                                {% for genre in result.genre %}
+                                    <button class="redirect-btn">{{genre}}</button> 
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row light-grey-text">
+                    <div class="description-header">
+                        Description <br>
+                    </div>
+                    <span class = "grey-text description-text">
+                        {{result.description}}
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 info-col-3">
+                <div class="row tracklist-header light-grey-text">Tracklist:</div>
+                <div class= "row grey-text list-details">
+                    <ol>
+                        {% for track in result.tracklist %}
+                            <li class = list-details>{{track}}</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+                <div class="row light-grey-text label-text">
+                    Released by {{result.label}}
+                </div>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7">
+                        <button id="edit-btn" class ="edit-btn">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
